@@ -1,11 +1,38 @@
 {
   "name": "vue-active-swiper",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.2",
+  "license": "MIT",
+  "author": {
+    "name": "kother1",
+    "email": "kother@foxmail.com",
+    "url": "https://github.com/accforgit"
+  },
+  "bugs": {
+    "url": "https://github.com/accforgit/vue-active-swiper/issues"
+  },
+  "description": "Swiper component for Vue",
+  "main": "dist/VueActiveSwiper.umd.min.js",
+  "keywords": [
+    "vue-active-swiper",
+    "vue active swiper",
+    "active-swiper",
+    "vue carrousel",
+    "vue swiper",
+    "vue slide", 
+    "carrousel",
+    "swiper", 
+    "slider"
+  ],
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lib": "vue-cli-service build --target lib --name VueActiveSwiper src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/accforgit/vue-active-swiper.git"
   },
   "dependencies": {
     "vue": "^2.5.17"
