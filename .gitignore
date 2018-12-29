@@ -20,4 +20,3 @@ yarn-error.log*
 *.sw*
 *.map
 babel.config.js
-public
