@@ -112,7 +112,8 @@ new Vue({
 
 ## 额外的能力
 
-The `Swiper`component provides a method `goto`, which allows developers to specify slide to which `Swiper Item`:
+### goto
+
 `Swiper`组件提供了一个 `goto`方法，允许使用者自行指定滑动到哪一个 `SwiperItem`的位置：
 
 ```js
@@ -122,6 +123,20 @@ this.$refs.mySwiper.goto(2)
 参数 `index`从 `0` 开始
 
 具体参见示例 [example - basic-slot](https://github.com/accforgit/vue-active-swiper/blob/master/example/basic-slot.vue)
+
+### 具名 slot
+
+`Swiper`组件还可以接收一个 `name`为 `extra`的具名 `slot`，方便开发者更加自由地定制化组件:
+
+```html
+<Swiper>
+  <SwiperItem>1</SwiperItem>
+  <SwiperItem>2</SwiperItem>
+  <SwiperItem>3</SwiperItem>
+  <!-- 具名 slot -->
+  <p slot="extra">custom extra content</p>
+</Swiper>
+```
 
 ## License
 

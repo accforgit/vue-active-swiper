@@ -114,6 +114,8 @@ Work on a Vue instance:
 
 ## Extra
 
+### goto
+
 The `Swiper`component provides a method `goto`, which allows users to specify slide to which `Swiper Item`:
 
 ```js
@@ -123,3 +125,21 @@ this.$refs.mySwiper.goto(2)
 `index` start at `0`
 
 see more [example - basic-slot](https://github.com/accforgit/vue-active-swiper/blob/master/example/basic-slot.vue)
+
+### Named Slot
+
+`Swiper` can also receive a named slot - `extra`，make it easier for developers to customize components more freely:
+
+```html
+<Swiper>
+  <SwiperItem>1</SwiperItem>
+  <SwiperItem>2</SwiperItem>
+  <SwiperItem>3</SwiperItem>
+  <!-- named slot -->
+  <p slot="extra">custom extra content</p>
+</Swiper>
+```
+
+## License
+
+MIT
