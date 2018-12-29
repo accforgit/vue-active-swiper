@@ -4,7 +4,7 @@
 
 ![img](https://raw.githubusercontent.com/accforgit/vue-active-swiper/master/public/swiper-1.gif)
 
-[简体中文](https://github.com/accforgit/vue-active-swiper/README.md) | English
+[简体中文](https://github.com/accforgit/vue-active-swiper/blob/master/README.md) | English
 
 ## Example
 
