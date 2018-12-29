@@ -2,7 +2,7 @@
 
 `vue-active-swiper` is a lightweight Swiper component for Vue
 
-![img](https://github.com/accforgit/vue-active-swiper/public/swiper-1.gif)
+![img](https://raw.githubusercontent.com/accforgit/vue-active-swiper/master/public/swiper-1.gif)
 
 [简体中文](https://github.com/accforgit/vue-active-swiper/README.md) | English
 
@@ -118,4 +118,4 @@ this.$refs.mySwiper.goto(2)
 `goto` receives a `Number` parameter(`index`),eepresents sliding to `a Swiper Item` with `index` subscript 
 `index` start at `0`
 
-see more [example - basic-slot](https://github.com/accforgit/vue-active-swiper/example/basic-slot.vue)
+see more [example - basic-slot](https://github.com/accforgit/vue-active-swiper/blob/master/example/basic-slot.vue)

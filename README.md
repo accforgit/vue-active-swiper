@@ -2,9 +2,9 @@
 
 `vue-active-swiper` 是一个面向移动端、轻量级的 `vue`轮播组件
 
-![img](https://github.com/accforgit/vue-active-swiper/public/swiper-1.gif)
+![img](https://raw.githubusercontent.com/accforgit/vue-active-swiper/master/public/swiper-1.gif)
 
-[English](https://github.com/accforgit/vue-active-swiper/README_US.md) | 简体中文
+[English](https://github.com/accforgit/vue-active-swiper/blob/master/README_US.md) | 简体中文
 
 ## 示例
 
@@ -117,7 +117,7 @@ this.$refs.mySwiper.goto(2)
 `goto`方法接收一个 `number`类型的参数(`index`)，表示将要滑动到的 `SwiperItem`的位置
 参数 `index`从 `0` 开始
 
-具体参见示例 [example - basic-slot](https://github.com/accforgit/vue-active-swiper/example/basic-slot.vue)
+具体参见示例 [example - basic-slot](https://github.com/accforgit/vue-active-swiper/blob/master/example/basic-slot.vue)
 
 ## License
 
