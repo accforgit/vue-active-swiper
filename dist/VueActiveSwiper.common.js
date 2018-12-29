@@ -1559,12 +1559,12 @@ var src_install = function install(Vue) {
   Vue.component(swiper_item.name, swiper_item);
 };
 
-var VueSwiper = {
+var VueActiveSwiper = {
   Swiper: swiper,
   SwiperItem: swiper_item,
   install: src_install
 };
-/* harmony default export */ var src = (VueSwiper);
+/* harmony default export */ var src = (VueActiveSwiper);
 
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
 /* concated harmony reexport Swiper */__webpack_require__.d(__webpack_exports__, "Swiper", function() { return swiper; });

@@ -1,5 +1,5 @@
 <template>
-  <div class="swiper-container" ref="swiperContainer" :style="{ width: clientW + 'px', height: clientH + 'px' }">
+  <div class="active-swiper-container" ref="swiperContainer" :style="{ width: clientW + 'px', height: clientH + 'px' }">
     <div class="swiper-wrapper" ref="sliderWrapper" :style="{
         transform: `translate3d(${transX}px, 0, 0)`,
         transition: isTransToX ? `transform ${duration}ms cubic-bezier(0, 0, 0.25, 1)` : ''
@@ -366,30 +366,31 @@ export default {
 }
 </script>
 
-<style scoped>
-.swiper-container {
+<style>
+.active-swiper-container {
   position: relative;
   overflow: hidden;
   background-color: #eee;
 }
-.swiper-container * {
+.active-swiper-container * {
   box-sizing: border-box;
 }
-.swiper-wrapper {
+.active-swiper-container .swiper-wrapper {
   height: 100%;
   white-space: nowrap;
 }
-.swiper-item-box, .img-box {
+.active-swiper-container .swiper-item-box,
+.active-swiper-container .img-box {
   display: inline-block;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
-.img-box {
+.active-swiper-container .img-box {
   background-position: center center;
   background-repeat: no-repeat;
 }
-.swiper-pagination {
+.active-swiper-container .swiper-pagination {
   position: absolute;
   bottom: 10px;
   right: 10px;

@@ -6,7 +6,7 @@ const install = Vue => {
   Vue.component(SwiperItem.name, SwiperItem)
 }
 
-const VueSwiper = { Swiper, SwiperItem, install }
+const VueActiveSwiper = { Swiper, SwiperItem, install }
 
-export default VueSwiper
+export default VueActiveSwiper
 export { Swiper, SwiperItem, install }

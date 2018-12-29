@@ -8,9 +8,7 @@
 
 ## 示例
 
-- [example - basic-slot](https://github.com/accforgit/vue-active-swiper/example/basic-slot.vue)
-
-- [example - basic-urlList](https://github.com/accforgit/vue-active-swiper/example/basic-urlList.vue)
+- [example - basic](https://accforgit.github.io/vue-active-swiper/basic.html)
 
 ## 安装
 
@@ -60,14 +58,14 @@ export default {
 ```
 
 ```js
-const vueSwipe = VueSwipe.Swipe
-const vueSwipeItem = VueSwipe.SwipeItem
+const Swiper = VueActiveSwiper.Swiper
+const SwiperItem = VueActiveSwiper.SwiperItem
 
 new Vue({
-  el: 'body',
+  el: '#app',
   components: {
-    'swipe': vueSwipe,
-    'swipe-item': vueSwipeItem
+    Swiper,
+    SwiperItem
   }
 })
 ```
