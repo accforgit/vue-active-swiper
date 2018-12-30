@@ -4,7 +4,7 @@
 
 ![img](https://img.shields.io/npm/v/vue-active-swiper.svg) ![img](https://img.shields.io/bundlephobia/minzip/vue-active-swiper.svg) ![img](https://img.shields.io/npm/dt/vue-active-swiper.svg) ![img](https://img.shields.io/github/license/accforgit/vue-active-swiper.svg)
 
-`vue-active-swiper` is a lightweight Swiper component for Vue
+`vue-active-swiper` is a Mobile-oriented、No dependencies、Lightweight Swiper component for Vue
 
 ![img](https://raw.githubusercontent.com/accforgit/vue-active-swiper/master/public/swiper-1.gif)
 

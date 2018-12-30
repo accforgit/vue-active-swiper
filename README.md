@@ -4,7 +4,7 @@
 
 ![img](https://img.shields.io/npm/v/vue-active-swiper.svg) ![img](https://img.shields.io/bundlephobia/minzip/vue-active-swiper.svg) ![img](https://img.shields.io/npm/dt/vue-active-swiper.svg) ![img](https://img.shields.io/github/license/accforgit/vue-active-swiper.svg)
 
-`vue-active-swiper` 是一个面向移动端、轻量级的 `vue`轮播组件
+`vue-active-swiper` 是一个面向移动端、无依赖、轻量级的 `vue`轮播组件
 
 ![img](https://raw.githubusercontent.com/accforgit/vue-active-swiper/master/public/swiper-1.gif)
 
