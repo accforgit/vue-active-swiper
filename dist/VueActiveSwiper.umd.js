@@ -983,7 +983,7 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.function.name.js
 var es6_function_name = __webpack_require__("7f7f");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"ca0e2238-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/swiper.vue?vue&type=template&id=a14bd0da&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"ca0e2238-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/swiper.vue?vue&type=template&id=5d04564e&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"swiperContainer",staticClass:"active-swiper-container",style:({ width: _vm.clientW + 'px', height: _vm.clientH + 'px' })},[_c('div',{ref:"sliderWrapper",staticClass:"swiper-wrapper",style:({
       transform: ("translate3d(" + _vm.transX + "px, 0, 0)"),
       transition: _vm.isTransToX ? ("transform " + _vm.duration + "ms cubic-bezier(0, 0, 0.25, 1)") : ''
@@ -994,7 +994,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/swiper.vue?vue&type=template&id=a14bd0da&
+// CONCATENATED MODULE: ./src/swiper.vue?vue&type=template&id=5d04564e&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.number.constructor.js
 var es6_number_constructor = __webpack_require__("c5f6");
@@ -1190,8 +1190,7 @@ var isSupportGetBoundingClientRect = typeof document.documentElement.getBounding
   },
   methods: {
     touchstartFn: function touchstartFn(e) {
-      e.preventDefault(); // 取消还没结束的自动轮播（如果指定了轮播的话）
-
+      // 取消还没结束的自动轮播（如果指定了轮播的话）
       clearTimeout(autoPlayTimer);
       if (this.ignoreTouch()) return;
 
@@ -1223,7 +1222,6 @@ var isSupportGetBoundingClientRect = typeof document.documentElement.getBounding
       }
     },
     touchendFn: function touchendFn(e) {
-      e.preventDefault();
       touchCount = e.touches.length;
       if (this.ignoreTouch() || touchStatus !== 1) return;
 
