@@ -103,7 +103,7 @@ Work on a Vue instance:
 |backgroundSize|String|`Specifies how the image is scaled in the sliding-container-box`(`Swiper`)，Value and Effect are the same as `CSS background-size` <br>Valid only when urlList is specified|cover|false|
 |clientW|Number|Width of the sliding-container-box (`Swiper`)|`document.documentElement.clientWidth`|false|
 |clientH|Number|Height of the sliding-container-box (`Swiper')|200|false|
-|showCounter|Boolean|ifneed a default counter|false|false|
+|showCounter|Boolean|if need a default counter|false|false|
 |counterStyle|Object|Customize the style of the default counter <br>Valid only when `showCounter` is `true`|null|false|
 |startIndex|Number|Start swipe item index|0|false|
 |criticalValue|Number|Proportional value of critical point <br>When it exceeds the critical point represented by this value, it will automatically slide to the next picture.|1/3|false|

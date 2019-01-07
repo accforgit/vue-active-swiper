@@ -179,7 +179,6 @@ export default {
   },
   methods: {
     touchstartFn (e) {
-      e.preventDefault()
       // 取消还没结束的自动轮播（如果指定了轮播的话）
       clearTimeout(autoPlayTimer)
       if (this.ignoreTouch()) return
@@ -208,7 +207,6 @@ export default {
       }
     },
     touchendFn (e) {
-      e.preventDefault()
       touchCount = e.touches.length
       if (this.ignoreTouch() || touchStatus !== 1) return
       if (this.swiperItemCount !== 1 || !this.noDragWhenSingle) {
