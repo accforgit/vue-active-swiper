@@ -55,7 +55,7 @@ let activeIndex = 0
 // sliderWrapper上的触摸点数量
 let touchCount = 0
 // 用于取消自动轮播（如果指定了的话）
-let autoPlayTimer = null
+let _autoPlayTimer = null
 // getBoundingClientRect的兼容性
 const isSupportGetBoundingClientRect = typeof document.documentElement.getBoundingClientRect === 'function'
 
@@ -171,12 +171,13 @@ export default {
       this.transX = stPrevX = -clientW * activeIndex
     }
     // 自动轮播
-    setTimeout(() => {
+    clearTimeout(_autoPlayTimer)
+    _autoPlayTimer = setTimeout(() => {
       this.autoPlayFn()
     }, 14)
   },
   destroy () {
-    clearTimeout(autoPlayTimer)
+    clearTimeout(_autoPlayTimer)
   },
   watch: {
     autoPlayDelay () {
@@ -187,7 +188,7 @@ export default {
   methods: {
     touchstartFn (e) {
       // 取消还没结束的自动轮播（如果指定了轮播的话）
-      clearTimeout(autoPlayTimer)
+      clearTimeout(_autoPlayTimer)
       if (this.ignoreTouch()) return
       if (this.isTransToX) {
         if (!isSupportGetBoundingClientRect) {
@@ -286,7 +287,8 @@ export default {
       this.$emit('change', activeIndex)
       // setTimeout是为了避免当 autoPlayDelay值被指定为 0 时无限轮播出现问题
       // 16.7 是 1000/60 的大约值
-      setTimeout(() => {
+      clearTimeout(_autoPlayTimer)
+      _autoPlayTimer = setTimeout(() => {
         this.autoPlayFn()
       }, 16.7)
     },
@@ -325,8 +327,8 @@ export default {
     autoPlayFn () {
       // 判断是否满足自动轮播的条件
       if (this.swiperItemCount > 1 && (typeof this.autoPlayDelay === 'number' && this.autoPlayDelay >= 0) && touchCount === 0 && this.transX % clientW === 0) {
-        clearTimeout(autoPlayTimer)
-        autoPlayTimer = setTimeout(() => {
+        clearTimeout(_autoPlayTimer)
+        _autoPlayTimer = setTimeout(() => {
           activeIndex = activeIndex + 1
           this.transX = -clientW * activeIndex
           this.isTransToX = true
@@ -362,7 +364,7 @@ export default {
       }
     },
     goto (index) {
-      clearTimeout(autoPlayTimer)
+      clearTimeout(_autoPlayTimer)
       activeIndex = index % (this.swiperItemCount - 2) + 1
       if (this.activeIndex !== activeIndex) {
         this.activeIndex = activeIndex

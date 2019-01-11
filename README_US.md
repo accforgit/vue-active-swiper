@@ -12,7 +12,9 @@
 
 ## Example
 
-- [example - basic](https://accforgit.github.io/vue-active-swiper/basic.html)
+- [Basic Demo](https://accforgit.github.io/vue-active-swiper/basic.html)
+
+- [vue-active-preview](https://github.com/accforgit/vue-active-preview) && [vue-active-swiper](https://github.com/accforgit/vue-active-swiper) [Live Demo](https://accforgit.github.io/vue-active-preview/swiper_preview.html)
 
 ## Install
 
