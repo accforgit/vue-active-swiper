@@ -93,7 +93,9 @@ new Vue({
 ]" />
 ```
 
-## Props
+## Options
+
+### Props
 
 |参数|类型|描述|默认值|是否必须|
 |----|---|----|----|---|
@@ -108,7 +110,13 @@ new Vue({
 |autoPlayDelay|Number|如果指定了此参数，并且值 `>= 0`，则将会将此值当做 自动轮播`delay`的时间(单位为 `ms`)进行自动轮播；不指定则不自动轮播 <br>如果想要指定此值，一般建议设置为 `3000`|null|否|
 |duration|Number|自动滚动到稳定位置所需的时间，单位是秒(ms)|350|否|
 |noDragWhenSingle|Boolean|如果只有一个 swipeItem，是否禁止拖动|true|否|
-|changeCallback|Function|每次滚动结束后的回调，回调参数为当前的 `activeIndex`|-|否|
+
+### Events
+
+|事件名|描述|参数|
+|---|---|---|
+|click|整个组件的点击事件（可用于控制组件的显示/隐藏）|activeIndex|
+|change|每次滚动结束后的回调|activeIndex|
 
 ## 额外的能力
 

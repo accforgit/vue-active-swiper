@@ -1,5 +1,9 @@
 <template>
-  <div class="active-swiper-container" ref="swiperContainer" :style="{ width: clientW + 'px', height: clientH + 'px' }">
+  <div
+    class="active-swiper-container"
+    ref="swiperContainer"
+    :style="{ width: clientW + 'px', height: clientH + 'px' }"
+    @click="swipeClick">
     <div class="swiper-wrapper" ref="sliderWrapper" :style="{
         transform: `translate3d(${transX}px, 0, 0)`,
         transition: isTransToX ? `transform ${duration}ms cubic-bezier(0, 0, 0.25, 1)` : ''
@@ -105,15 +109,13 @@ export default {
       required: false,
       default: 1 / 3
     },
-    // 如果指定了此参数，并且值 >= 0，则将会将此值当做 delay的时间(单位为 ms)进行自动轮播；不指定则不自动轮播
+    // 如果指定了此参数，并且值 >= 0，则将会将此值当做 delay的时间(单位为 ms)进行自动轮播；
+    // 不指定或指定值小于 0 则不自动轮播
     // 如果想要指定此值，一般建议设置为 3000
     autoPlayDelay: {
       type: Number,
       required: false,
-      default: null,
-      validator(value) {
-        return value >= 0
-      }
+      default: null
     },
     // 自动滚动到稳定位置所需的时间，单位是秒(ms)
     duration: {
@@ -129,12 +131,6 @@ export default {
       type: Boolean,
       required: false,
       default: true
-    },
-    // 每次滚动结束后的回调
-    changeCallback: {
-      type: Function,
-      required: false,
-      default: () => {}
     }
   },
   data () {
@@ -175,7 +171,18 @@ export default {
       this.transX = stPrevX = -clientW * activeIndex
     }
     // 自动轮播
-    this.autoPlayFn()
+    setTimeout(() => {
+      this.autoPlayFn()
+    }, 14)
+  },
+  destroy () {
+    clearTimeout(autoPlayTimer)
+  },
+  watch: {
+    autoPlayDelay () {
+      // 修改了 autoPlayDelay 的值，需要重新触发事件
+      this.autoPlayFn()
+    }
   },
   methods: {
     touchstartFn (e) {
@@ -276,7 +283,7 @@ export default {
     transEndFn () {
       this.activeIndex = activeIndex = this.getActiveIndex(activeIndex)
       this.transX = stPrevX = -clientW * activeIndex
-      this.changeCallback(activeIndex)
+      this.$emit('change', activeIndex)
       // setTimeout是为了避免当 autoPlayDelay值被指定为 0 时无限轮播出现问题
       // 16.7 是 1000/60 的大约值
       setTimeout(() => {
@@ -317,7 +324,7 @@ export default {
     },
     autoPlayFn () {
       // 判断是否满足自动轮播的条件
-      if (this.swiperItemCount > 1 && typeof this.autoPlayDelay === 'number' && this.autoPlayDelay >= 0 && touchCount === 0 && this.transX % clientW === 0) {
+      if (this.swiperItemCount > 1 && (typeof this.autoPlayDelay === 'number' && this.autoPlayDelay >= 0) && touchCount === 0 && this.transX % clientW === 0) {
         clearTimeout(autoPlayTimer)
         autoPlayTimer = setTimeout(() => {
           activeIndex = activeIndex + 1
@@ -338,6 +345,10 @@ export default {
         this.isTransToX = false
         this.transEndFn()
       }
+    },
+    // 组件的点击事件
+    swipeClick () {
+      this.$emit('click', this.activeIndex - 1)
     },
     gotoX (toX) {
       if (this.transX === toX) {

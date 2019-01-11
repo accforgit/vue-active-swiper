@@ -974,8 +974,8 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.function.name.js
 var es6_function_name = __webpack_require__("7f7f");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"ca0e2238-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/swiper.vue?vue&type=template&id=5d04564e&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"swiperContainer",staticClass:"active-swiper-container",style:({ width: _vm.clientW + 'px', height: _vm.clientH + 'px' })},[_c('div',{ref:"sliderWrapper",staticClass:"swiper-wrapper",style:({
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"ca0e2238-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/swiper.vue?vue&type=template&id=5c0ee240&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"swiperContainer",staticClass:"active-swiper-container",style:({ width: _vm.clientW + 'px', height: _vm.clientH + 'px' }),on:{"click":_vm.swipeClick}},[_c('div',{ref:"sliderWrapper",staticClass:"swiper-wrapper",style:({
       transform: ("translate3d(" + _vm.transX + "px, 0, 0)"),
       transition: _vm.isTransToX ? ("transform " + _vm.duration + "ms cubic-bezier(0, 0, 0.25, 1)") : ''
     }),on:{"touchstart":_vm.touchstartFn,"touchmove":_vm.touchmoveFn,"touchend":_vm.touchendFn,"transitionend":_vm.transitionendFn}},[(_vm.urlList)?_vm._l((_vm.currentList),function(item){return _c('div',{key:item._id,staticClass:"img-box",style:({
@@ -985,13 +985,17 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/swiper.vue?vue&type=template&id=5d04564e&
+// CONCATENATED MODULE: ./src/swiper.vue?vue&type=template&id=5c0ee240&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.number.constructor.js
 var es6_number_constructor = __webpack_require__("c5f6");
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/swiper.vue?vue&type=script&lang=js&
 
+//
+//
+//
+//
 //
 //
 //
@@ -1095,15 +1099,13 @@ var isSupportGetBoundingClientRect = typeof document.documentElement.getBounding
       required: false,
       default: 1 / 3
     },
-    // 如果指定了此参数，并且值 >= 0，则将会将此值当做 delay的时间(单位为 ms)进行自动轮播；不指定则不自动轮播
+    // 如果指定了此参数，并且值 >= 0，则将会将此值当做 delay的时间(单位为 ms)进行自动轮播；
+    // 不指定或指定值小于 0 则不自动轮播
     // 如果想要指定此值，一般建议设置为 3000
     autoPlayDelay: {
       type: Number,
       required: false,
-      default: null,
-      validator: function validator(value) {
-        return value >= 0;
-      }
+      default: null
     },
     // 自动滚动到稳定位置所需的时间，单位是秒(ms)
     duration: {
@@ -1119,12 +1121,6 @@ var isSupportGetBoundingClientRect = typeof document.documentElement.getBounding
       type: Boolean,
       required: false,
       default: true
-    },
-    // 每次滚动结束后的回调
-    changeCallback: {
-      type: Function,
-      required: false,
-      default: function _default() {}
     }
   },
   data: function data() {
@@ -1143,6 +1139,8 @@ var isSupportGetBoundingClientRect = typeof document.documentElement.getBounding
     };
   },
   created: function created() {
+    var _this = this;
+
     if (this.urlList) {
       this.currentList = this.urlList.length > 1 ? this.urlList.slice(-1).concat(this.urlList, this.urlList.slice(0, 1)).map(function (url, index) {
         return {
@@ -1177,7 +1175,18 @@ var isSupportGetBoundingClientRect = typeof document.documentElement.getBounding
     } // 自动轮播
 
 
-    this.autoPlayFn();
+    setTimeout(function () {
+      _this.autoPlayFn();
+    }, 14);
+  },
+  destroy: function destroy() {
+    clearTimeout(autoPlayTimer);
+  },
+  watch: {
+    autoPlayDelay: function autoPlayDelay() {
+      // 修改了 autoPlayDelay 的值，需要重新触发事件
+      this.autoPlayFn();
+    }
   },
   methods: {
     touchstartFn: function touchstartFn(e) {
@@ -1287,15 +1296,15 @@ var isSupportGetBoundingClientRect = typeof document.documentElement.getBounding
       return toX;
     },
     transEndFn: function transEndFn() {
-      var _this = this;
+      var _this2 = this;
 
       this.activeIndex = activeIndex = this.getActiveIndex(activeIndex);
       this.transX = stPrevX = -clientW * activeIndex;
-      this.changeCallback(activeIndex); // setTimeout是为了避免当 autoPlayDelay值被指定为 0 时无限轮播出现问题
+      this.$emit('change', activeIndex); // setTimeout是为了避免当 autoPlayDelay值被指定为 0 时无限轮播出现问题
       // 16.7 是 1000/60 的大约值
 
       setTimeout(function () {
-        _this.autoPlayFn();
+        _this2.autoPlayFn();
       }, 16.7);
     },
     transitionendFn: function transitionendFn(e) {
@@ -1331,17 +1340,17 @@ var isSupportGetBoundingClientRect = typeof document.documentElement.getBounding
       return index;
     },
     autoPlayFn: function autoPlayFn() {
-      var _this2 = this;
+      var _this3 = this;
 
       // 判断是否满足自动轮播的条件
       if (this.swiperItemCount > 1 && typeof this.autoPlayDelay === 'number' && this.autoPlayDelay >= 0 && touchCount === 0 && this.transX % clientW === 0) {
         clearTimeout(autoPlayTimer);
         autoPlayTimer = setTimeout(function () {
           activeIndex = activeIndex + 1;
-          _this2.transX = -clientW * activeIndex;
-          _this2.isTransToX = true;
+          _this3.transX = -clientW * activeIndex;
+          _this3.isTransToX = true;
 
-          _this2.correctDurationAct();
+          _this3.correctDurationAct();
         }, this.autoPlayDelay);
       }
     },
@@ -1356,6 +1365,10 @@ var isSupportGetBoundingClientRect = typeof document.documentElement.getBounding
         this.isTransToX = false;
         this.transEndFn();
       }
+    },
+    // 组件的点击事件
+    swipeClick: function swipeClick() {
+      this.$emit('click', this.activeIndex - 1);
     },
     gotoX: function gotoX(toX) {
       if (this.transX === toX) {
